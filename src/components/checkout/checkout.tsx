@@ -63,7 +63,10 @@ export default component$<CheckoutProps>(
         <div>${totalValue}</div>
         <div class="divider divider-primary"></div>
         <div class="flex space-x-2">
-          <button class="btn btn-primary text-white" onClick$={onFinish}>
+          <button
+            class="btn btn-primary text-white"
+            onClick$={() => onFinish()}
+          >
             Finish checkout!
           </button>
           <button

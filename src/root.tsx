@@ -5,7 +5,7 @@ import {
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
-
+import { Insights } from "@builder.io/qwik-labs";
 import "./global.css";
 
 export default component$(() => {
@@ -19,6 +19,7 @@ export default component$(() => {
   return (
     <QwikCityProvider>
       <head>
+        <Insights publicApiKey={"285zifdeb25"} />
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <RouterHead />
