@@ -1,9 +1,9 @@
-import { type Signal, component$, $ } from "@builder.io/qwik";
+import { component$, $ } from "@builder.io/qwik";
 import type { MarketState } from "~/routes/market";
 
 interface CheckoutProps {
   state: MarketState;
-  totalValue: Readonly<Signal<number>>;
+  totalValue: number;
 }
 
 export default component$<CheckoutProps>(
@@ -60,7 +60,7 @@ export default component$<CheckoutProps>(
         })}
 
         <div class="divider divider-primary font-extrabold">Total</div>
-        <div>${totalValue.value}</div>
+        <div>${totalValue}</div>
         <div class="divider divider-primary"></div>
         <div class="flex space-x-2">
           <button class="btn btn-primary text-white" onClick$={onFinish}>
