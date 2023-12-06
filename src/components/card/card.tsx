@@ -1,5 +1,5 @@
 import { component$, $ } from "@builder.io/qwik";
-import { type MarketState } from "~/routes/market";
+import type { MarketState } from "~/models";
 
 interface CardProps {
   id: number;
