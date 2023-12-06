@@ -11,6 +11,10 @@ export const useProductDetails = routeLoader$(async () => {
   return mockData as MarketItems[];
 });
 
+//Serialization === $ boundry
+//the $ is called symbols, a symbol can be a component or even smaller, like a function
+//Basically we're telling qwik that this component CAN BE splitted on the build
+//The worst kind of code magic is the kind that's invisible to the developer.
 export default component$(() => {
   //Or initi application state
   //Present the state as a proxy that can observe read/writes to the store
@@ -33,12 +37,10 @@ export default component$(() => {
   return (
     <>
       <div class="flex flex-wrap align-center justify-center p-20 ">
-        {products.value.map((item, key) => {
-          return <Card {...item} key={key} state={marketState} />;
+        {products.value.map((item) => {
+          return <Card {...item} key={item.id} state={marketState} />;
         })}
-
         <Cart state={marketState} totaValue={totalValue.value} />
-
         <Checkout state={marketState} totalValue={totalValue.value} />
       </div>
 

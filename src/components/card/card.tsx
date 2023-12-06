@@ -36,7 +36,7 @@ export default component$(
     });
 
     return (
-      <div class="card w-96 bg-neutral-900 shadow-xl m-4">
+      <div class="card w-96 bg-neutral-900 shadow-xl m-4" key={id}>
         <figure>
           <img src={image} alt="Shoes" width={300} height={300} />
         </figure>
