@@ -1,0 +1,5 @@
+https://qwik-meetup.vercel.app/market/
+
+https://qwik-meetup.vercel.app/counter
+
+https://next-meetup-8iru7rkur-fbzz.vercel.app/market
