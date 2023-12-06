@@ -1,4 +1,4 @@
-import { MarketItems } from "../routes/market";
+import type { MarketItems } from ".";
 
 export const mockData: MarketItems[] = [
   {
