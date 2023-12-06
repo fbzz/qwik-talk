@@ -12,7 +12,7 @@ export default component$(() => {
         <button class="btn btn-secondary m-5" onClick$={() => counter.value--}>
           -1
         </button>
-        <span class="m-5">{counter}</span>
+        <span class="m-5 text-xl">{counter}</span>
       </div>
     </>
   );
