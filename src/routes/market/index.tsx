@@ -36,12 +36,10 @@ export default component$(() => {
         {products.value.map((item, key) => {
           return <Card {...item} key={key} state={marketState} />;
         })}
-        {marketState.itemsOnCart.length > 0 ? (
-          <Cart state={marketState} totaValue={totalValue.value} />
-        ) : null}
-        {marketState.isCheckingOut ? (
-          <Checkout state={marketState} totalValue={totalValue.value} />
-        ) : null}
+
+        <Cart state={marketState} totaValue={totalValue.value} />
+
+        <Checkout state={marketState} totalValue={totalValue.value} />
       </div>
 
       <Clock />
