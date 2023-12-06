@@ -7,11 +7,20 @@ interface CardProps {
   description: string;
   callToAction: string;
   price: number;
+  image: string;
   state: MarketState;
 }
 
 export default component$<CardProps>(
-  ({ id, title, description, callToAction, price, state }: CardProps) => {
+  ({
+    id,
+    title,
+    description,
+    callToAction,
+    price,
+    image,
+    state,
+  }: CardProps) => {
     const addToCart = $(() => {
       state.itemsOnCart = [
         ...state.itemsOnCart,
@@ -21,8 +30,7 @@ export default component$<CardProps>(
           description,
           callToAction,
           price,
-          image:
-            "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
+          image,
         },
       ];
     });
@@ -30,12 +38,7 @@ export default component$<CardProps>(
     return (
       <div class="card w-96 bg-neutral-900 shadow-xl m-4">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="Shoes"
-            width={300}
-            height={300}
-          />
+          <img src={image} alt="Shoes" width={300} height={300} />
         </figure>
         <div class="card-body">
           <h2 class="card-title">{title}</h2>

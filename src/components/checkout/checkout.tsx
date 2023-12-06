@@ -14,6 +14,16 @@ export default component$<CheckoutProps>(
       state.itemsOnCart = [];
     });
 
+    const removeItem = $((id: number) => {
+      state.itemsOnCart = state.itemsOnCart.filter(
+        (filteringItem) => filteringItem.id !== id
+      );
+    });
+
+    const onCancel = $(() => {
+      state.isCheckingOut = false;
+    });
+
     return (
       <div
         class="fixed w-6/12 h-full bg-white top-0 right-0 z-50 text-black flex items-center flex-col p-20 overflow-auto"
@@ -22,10 +32,10 @@ export default component$<CheckoutProps>(
         <h1 class="font-extrabold ">Checkout</h1>
         <div class="divider divider-primary font-extrabold">Items</div>
 
-        {state.itemsOnCart.map((item) => {
+        {state.itemsOnCart.map((item, key) => {
           return (
             <>
-              <div class="flex w-full ">
+              <div class="flex w-full " key={key}>
                 <div class="flex-2">
                   <img
                     src={item.image}
@@ -44,9 +54,7 @@ export default component$<CheckoutProps>(
                   <p
                     class="text-red-500 cursor-pointer"
                     onClick$={() => {
-                      state.itemsOnCart = state.itemsOnCart.filter(
-                        (filteringItem) => filteringItem.id !== item.id
-                      );
+                      removeItem(item.id);
                     }}
                   >
                     Remove
@@ -69,10 +77,7 @@ export default component$<CheckoutProps>(
           >
             Finish checkout!
           </button>
-          <button
-            class="btn btn-danger text-white"
-            onClick$={() => (state.isCheckingOut = false)}
-          >
+          <button class="btn btn-danger text-white" onClick$={() => onCancel()}>
             Cancel!
           </button>
         </div>
