@@ -6,7 +6,7 @@ interface CartProps {
   totaValue: number;
 }
 
-export default component$<CartProps>(({ state, totaValue }: CartProps) => {
+export default component$(({ state, totaValue }: CartProps) => {
   const startCheckout = $(() => {
     state.isCheckingOut = true;
   });

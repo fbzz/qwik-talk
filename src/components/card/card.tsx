@@ -11,7 +11,7 @@ interface CardProps {
   state: MarketState;
 }
 
-export default component$<CardProps>(
+export default component$(
   ({
     id,
     title,
