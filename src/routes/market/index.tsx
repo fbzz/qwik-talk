@@ -2,32 +2,24 @@ import { component$, useStore, useComputed$ } from "@builder.io/qwik";
 import Card from "~/components/card/card";
 import Cart from "~/components/cart/cart";
 import Checkout from "~/components/checkout/checkout";
-import { mockData } from "./mock";
+import { mockData } from "../../models/mock";
 import { routeLoader$ } from "@builder.io/qwik-city";
-
-export interface MarketItems {
-  id: number;
-  title: string;
-  description: string;
-  callToAction: string;
-  price: number;
-  image: string;
-}
+import type { MarketItems, MarketState } from "~/models";
+import Clock from "~/components/clock/clock";
 
 export const useProductDetails = routeLoader$(async () => {
   return mockData as MarketItems[];
 });
 
-export type MarketState = {
-  itemsOnCart: MarketItems[];
-  isCheckingOut: boolean;
-};
-
 export default component$(() => {
+  //Or initi application state
+  //Present the state as a proxy that can observe read/writes to the store
   const marketState = useStore<MarketState>({
     itemsOnCart: [],
     isCheckingOut: false,
   });
+
+  //Get data from some endpoints, pretty similar to getStatic props from next
   const products = useProductDetails();
 
   /**
@@ -51,6 +43,8 @@ export default component$(() => {
           <Checkout state={marketState} totalValue={totalValue.value} />
         ) : null}
       </div>
+
+      <Clock />
     </>
   );
 });
